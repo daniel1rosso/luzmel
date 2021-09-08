@@ -27,8 +27,8 @@ export class DetallePresupuestoService {
     return this._http.get<Presupuesto[]>(this._url.getURLBase() + '/presupuesto_detalle');
   }
 
-  guardarDetallePresupuesto(idPresupuesto: any): Observable<any> {
-    return this._http.post(this._url.getURLBase() + '/presupuestos_detalle/new_presupuesto_detalle', idPresupuesto);
+  guardarDetallePresupuesto(idPresupuesto: any, detallePresupuestos:any): Observable<any> {
+      return this._http.post(this._url.getURLBase() + '/presupuesto_detalle/new_presupuesto_detalle/' + idPresupuesto, detallePresupuestos);
   }
 
   eliminarDetallePresupuesto(idDetallePresupuesto: number) {
@@ -42,7 +42,6 @@ export class DetallePresupuestoService {
 
   getDetallesPorPresupuesto(idPresupuesto: any): Observable<any> {
     const params = new HttpParams().set("idPresupuesto", String(idPresupuesto));
-    console.log("ID PRESUPUESTO: " + idPresupuesto);
     return this._http.get<DetallePresupuesto[]>(this._url.getURLBase() + '/presupuesto_detalle/'+ idPresupuesto);
   }
 

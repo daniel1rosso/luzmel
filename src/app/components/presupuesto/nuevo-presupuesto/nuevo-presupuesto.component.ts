@@ -124,17 +124,14 @@ export class NuevoPresupuestoComponent implements OnInit {
     if (miFormulario.valid) {
       this._servicioPresupuesto.guardarPresupuesto(presupuesto).subscribe((respuesta) => {
         console.log(respuesta);
-        let detallePresupuesto: any = {};
+        console.log(this.detallepresupuesto);
 
         this.detallepresupuesto.forEach(element => {
           element.precioFinal =element.producto.precioUnitario
-          element.presupuesto =respuesta
-          this._servicioDetallePresupuesto.guardarDetallePresupuesto(element).subscribe((respuesta) => {
-            console.log(respuesta);
+          this._servicioDetallePresupuesto.guardarDetallePresupuesto(respuesta._id, element).subscribe((respuest) => {
+            console.log(respuest);
           });
         });
-    
-        console.log(this.detallepresupuesto)
       });
       this._toastr.info('Presupuesto Guardado con exito!', 'OK', {
         timeOut: 2500,

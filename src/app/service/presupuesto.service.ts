@@ -34,15 +34,12 @@ export class PresupuestoService {
     return this._http.delete(this._url.getURLBase() + '/presupuesto/' + idPresupuesto);
   }
 
-
   modificarPresupuesto(presupuesto: any, idPresupuesto: any): Observable<any> {
     const url = this._url.getURLBase() + '/presupuesto/' + idPresupuesto;
     return this._http.put<any>(this._url.getURLBase() + '/presupuesto/' + idPresupuesto, presupuesto);
   }
 
-
 }
-
 
 export interface Presupuesto {
   idPresupuesto: number;

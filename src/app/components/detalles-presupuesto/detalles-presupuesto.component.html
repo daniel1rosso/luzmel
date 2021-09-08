@@ -30,22 +30,18 @@
           <table class="table table-striped">
             <thead class="thead-dark">
               <tr>
-                <th scope="col">ID</th>
                 <th scope="col">Cantidad</th>
                 <th scope="col">Precio Unitario</th>
                 <th scope="col">Producto</th>
                 <th scope="col">Detalle de Producto</th>
-                <th scope="col">Presupuesto</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let d of detalles">
-                <td>{{d._id}}</td>
                 <td>{{d.cantidad}}</td>
-                <td>{{d.producto.precioUnitario}}</td>
-                <td>{{d.producto.nombre}}</td>
-                <td>{{d.producto.descripcion}}</td>
-                <td>{{d.presupuesto.idPresupuesto}}</td>
+                <td>{{d.producto[0].precioUnitario}}</td>
+                <td>{{d.producto[0].nombre}}</td>
+                <td>{{d.producto[0].descripcion}}</td>
               </tr>
             </tbody>
           </table>
