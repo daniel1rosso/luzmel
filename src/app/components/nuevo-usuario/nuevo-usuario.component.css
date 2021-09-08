@@ -1,0 +1,33 @@
+body{
+  background-image: url("http://127.0.0.1:8887/goals.jpg");
+  background-repeat: no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  
+  background-size: cover;
+  }
+  .form-register{
+    background-color: rgba(206, 206, 206, .7);
+    border-radius: 20px;
+  }
+  
+  .h1{
+  font-family: 'Cinzel', serif;
+  /* font-family: 'Do Hyeon', sans-serif; */
+  font-size: xx-large;
+  }
+.container{
+  padding: 140px !important;
+  height: 100%;
+  justify-content: left;
+  align-items: center;
+
+}
+
+.titulo{
+  font-family: 'Poiret One', cursive;
+  font-size: 43px;
+  margin-top: 0px;
+  margin-bottom: 15px;
+}

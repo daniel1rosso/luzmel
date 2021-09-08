@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <header>
+    <app-navbar></app-navbar>
+  </header>
+  <body>
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-7">
+          <h2 class="display-4 text-center">Nuevo Cliente</h2>
+          <hr style="border-color: #333736" />
+          <p class="pb-0 mb-0">Aquí podrás cargar un nuevo Cliente</p>
+          <p class="text-danger small pt-0 mt-0">
+            *Todos lo campos son obligatorios
+          </p>
+          <form
+            class="shadow p-4 mb-4 bg-aqua"
+            (ngSubmit)="guardar(formulario)"
+            #formulario="ngForm"
+          >
+            <!-- <div class="form-group row">
+            <label class="col-form-label col-5">ID complejo:</label>
+            <input class="form-control col-6" type="text" name="idComplejo" id="idComplejo"
+              [(ngModel)]="complejo.idComplejo" readonly>
+          </div> -->
+
+            <div class="form-group row">
+              <label class="col-form-label col-5">Nombre:</label>
+              <input
+                class="form-control col-6"
+                type="text"
+                ngModel
+                name="nombre"
+                id="nombre"
+                placeholder="Ingrese nombre y Apellido "
+                required
+                #nombre="ngModel"
+                [class.is-invalid]="nombre.invalid && nombre.touched"
+                [class.is-valid]="nombre.valid"
+              />
+            </div>
+
+            <div class="form-group row">
+              <label class="col-form-label col-5">Teléfono:</label>
+              <input
+                class="form-control col-6"
+                type="number"
+                name="telefono"
+                id="telefono"
+                placeholder="Escriba el número aquí"
+                ngModel
+                required
+                #telefono="ngModel"
+                [class.is-invalid]="telefono.invalid && telefono.touched"
+                [class.is-valid]="telefono.valid"
+              />
+            </div>
+
+            <div class="form-group row">
+              <label class="col-form-label col-5">Dirección:</label>
+              <input
+                class="form-control col-6"
+                type="text"
+                ngModel
+                name="direccion"
+                id="direccion"
+                placeholder="Ingrese direccion "
+                required
+                #direccion="ngModel"
+                [class.is-invalid]="direccion.invalid && direccion.touched"
+                [class.is-valid]="direccion.valid"
+              />
+            </div>
+
+            <div class="form-group row">
+              <label class="col-form-label col-5">Email:</label>
+              <input
+                class="form-control col-6"
+                type="email"
+                ngModel
+                name="email"
+                placeholder="Ingrese e-mail"
+                pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}"
+                required
+                #email="ngModel"
+                [class.is-invalid]="email.invalid && email.touched"
+                [class.is-valid]="email.valid"
+              />
+            </div>
+
+            <button
+              type="submit"
+              [disabled]="formulario.invalid"
+              class="btn btn-success mt-3"
+              id="btnGuardar"
+            >
+              Guardar Cliente
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger pl-2 ml-2 mt-3"
+              id="btnCancelar"
+              routerLink="/clientes"
+            >
+              Cancelar
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800&family=Do+Hyeon&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="nuevo-usuario.component.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Roboto:ital,wght@0,500;1,400&family=Scheherazade:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<header>
+  <app-navbar></app-navbar>
+</header>
+
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="tranparente col-md-7">
+
+        <form class="form-register shadow p-4 mb-4 mt-4" autocomplete="off" (ngSubmit)="guardar(formulario)"
+          #formulario="ngForm">
+          <h1 class="titulo text-center"><b>Nuevo Usuario</b></h1>
+          <hr style="border-color:#333736;">
+          <label class="label" for="nombreUsuario">Nombre de Usuario:</label>
+          <input class="form-control mb-2" type="text" ngModel name="nombreUsuario"
+            id="nombreUsuario" placeholder="Ingrese nombre de usuario" required #nombreUsuario="ngModel"
+            [class.is-invalid]="nombreUsuario.invalid && nombreUsuario.touched"
+            [class.is-valid]="nombreUsuario.valid" minlength="7"
+            title="El usuario debe contener como minimo 7 letras">
+
+          <label class="label" for="contra">Contraseña:</label>
+          <input class="form-control mb-2" type="password" ngModel name="contra" id='contra' placeholder="Ingrese contraseña"
+            pattern="[A-Za-z0-9]{7,16}" required #contra="ngModel" [class.is-invalid]="contra.invalid && contra.touched"
+            [class.is-valid]="contra.valid" minlength="7" maxlength="16"
+            title="Letras y números. Tamaño mínimo: 7. Tamaño máximo: 16">
+
+          <label class="label" for="nombrePila">Nombre:</label>
+          <input class="form-control mb-2" type="text" ngModel name="nombrePila" id='nombrePila' placeholder="Ingrese nombre"
+            required #nombrePila="ngModel"
+            [class.is-invalid]="nombrePila.invalid && nombrePila.touched"
+            [class.is-valid]="nombrePila.valid" minlength="3">
+
+          <label class="label" for="apellidoUsuario">Apellido:</label>
+          <input class="form-control mb-2" type="text" ngModel name="apellidoUsuario" id="apellido"
+            placeholder="Ingrese apellido" required #apellidoUsuario="ngModel"
+            [class.is-invalid]="apellidoUsuario.invalid && apellidoUsuario.touched"
+            [class.is-valid]="apellidoUsuario.valid" minlength="3">
+
+          <label class="label" for="email">E-mail:</label>
+          <input class="form-control mb-2" type="email" ngModel name="email" id='email' placeholder="Ingrese e-mail"
+            pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" required
+            #email="ngModel"
+            [class.is-invalid]="email.invalid && email.touched"
+            [class.is-valid]="email.valid">
+
+          <!-- <input  type="checkbox" ngModel name="roles" id="idRol" required >
+            <label *ngFor="let r of roles" [ngValue]="[r.idRol]" for="roles">{{User}}</label><br>
+            <input type="checkbox" id="vehicle2" name="vehicle2" value="2">
+            <label for="vehicle2">ADMIN</label><br> -->
+
+
+          <label class="label">Rol:</label>
+          <select class="form-control mb-4" ngModel name="roles" id="idRol" required #rol="ngModel"
+          [class.is-invalid]="rol.invalid && rol.touched"
+          [class.is-valid]="rol.valid">
+            <option selected="true">Seleccione un rol</option>
+            <option *ngFor="let r of roles" [ngValue]="[r.idRol]">{{r.rolNombre}}</option>
+          </select>
+          <button type="submit" class="btn btn-success mr-2" id='registrar'><i class="fas fa-plus"></i> Registrar </button>
+          <button type="button" class="btn btn-primary" routerLink="/index"><i class="fas fa-arrow-left"></i>
+            Volver </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

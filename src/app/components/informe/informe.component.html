@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <header>
+    <app-navbar></app-navbar>
+  </header>
+  <body id="pdfTable" #pdfTable>
+    <div class="title">
+      <h1>Presupuesto N° {{ presupuesto.idPresupuesto }}</h1>
+    </div>
+    <div class="header">
+      <div class="datosCliente">
+        <h2><b>Datos del cliente</b></h2>
+        <hr />
+        <p class="cliente"><b>Cliente:</b>{{ presupuesto.cliente.nombre }}</p>
+        <p class="cliente"><b>Dirección:</b> {{ presupuesto.cliente.direccion }}</p>
+        <p class="cliente">
+          <b>Teléfono:</b>{{ presupuesto.cliente.telefono }}
+        </p>
+      </div>
+    </div>
+    <div class="details">
+      <h2><b>Detalles</b></h2>
+      <hr />
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Precio Unitario</th>
+            <th scope="col">Producto</th>
+            <th scope="col">Detalle de Producto</th>
+            <th scope="col">Subtotal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let d of detalles">
+            <td>{{ d.idDetallePresupuesto }}</td>
+            <td>{{ d.cantidad }} unidades</td>
+            <td>${{ d.producto.precioUnitario }}</td>
+            <td>{{ d.producto.nombre }}</td>
+            <td>{{ d.producto.descripcion }}</td>
+            <td>{{ d.cantidad * d.producto.precioUnitario }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="textArea">
+      <h2><b>Observaciones:</b></h2>
+      <br> 
+      <br> 
+      <br> 
+      <br> 
+      <br> 
+    </div>
+    
+    <div class="results">
+      <h2>Totales</h2>
+      <p class="col-form-label col-4">
+       <b>Descuento:</b> %{{ presupuesto.descuento }}
+      </p>
+      <p class="col-form-label col-4">
+        <b>Descuento Especial: -</b>  ${{ presupuesto.descuentoEspecial }}
+      </p>
+      <p class="col-form-label col-4"><b>Flete: + </b>${{ presupuesto.flete }}</p>
+      <p class="col-form-label col-4">
+        <b>TOTAL: Son pesos</b> ${{ presupuesto.precio }}
+      </p>
+    </div>
+    
+  </body>
+  <div class="imprimir">
+    <button class="btn btn-primary" (click)="downloadAsPDF()">Imprimir presupuesto</button>
+  </div>
+</html>

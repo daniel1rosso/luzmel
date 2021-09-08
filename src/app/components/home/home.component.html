@@ -1,0 +1,198 @@
+<!-- <Body>
+    <div class="container text-center">
+        <div ><h1>Bienvenido, {{nombreUsuarioComplejo}}!</h1></div>
+        <ng-template #loggedOut><h4>Pantalla de Bienvenida</h4>
+        </ng-template>
+
+    </div>
+</Body>  -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Otros -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis:wght@200&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="home.component.css" />
+  </head>
+
+  <body class="is-preload">
+    <app-navbar></app-navbar>
+    <!-- Header -->
+
+    <!-- Banner
+	<section id="banner">
+		<div class="inner">
+		</div>
+		<img src="http://192.168.126.1:8887/EasyFutbol.png" alt="">
+	</section> -->
+
+    <!-- Highlights -->
+    <section class="wrapper">
+      <div class="inner">
+        <div class="divWelcome">
+          <h2 class="h2Welcome">Bienvenido a Luzmel</h2>
+        </div>
+        <div class="highlights">
+          <section>
+            <div class="content">
+              <header>
+                <img
+                  class="imagen-prod"
+                  src="../../../assets/img/productos.png"
+                  alt="MDN"
+                />
+                <h3>PRODUCTOS</h3>
+              </header>
+              <p>
+                Agregue un nuevo producto haciendo click
+                <a href="/productos/nuevo">aquí</a>
+              </p>
+            </div>
+          </section>
+          <section>
+            <div class="content">
+              <header>
+                <a
+                  href="http://localhost:4200/cotizaciones"
+                  class="icon fa fa-credit-card-alt"
+                  ><span class="label">Icon</span></a
+                >
+                <h3>COTIZACIONES</h3>
+              </header>
+              <p>
+                Realice una nueva cotización haciendo click
+                <a href="/presupuesto/nuevo">aquí</a>
+              </p>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta" class="wrapper">
+      <div class="inner">
+        <h2><b>ESTAS LISTO?</b></h2>
+        <a class="boton" href="http://localhost:4200/cotizacion">COTIZÁ!</a>
+      </div>
+    </section>
+    <section class="wrapper">
+      <div class="container mt-5">
+        <div class="row justify-content-center">
+          <div class="col-md-5">
+            <h2 class="display-4 text-center">Contáctanos</h2>
+            <h3>
+              Comunícate con nosotros por cualquier problema o duda que tengas
+              sobre el sistema
+            </h3>
+            <form
+              enctype="text/plain"
+              action="mailto:diegomeineri1995@gmail.com"
+              method="post"
+            >
+              <input
+                name="nombre"
+                type="text"
+                placeholder="Nombre"
+                maxlength="30"
+                pattern="[a-zA-Z0-9]+"
+              />
+              <input
+                name="email"
+                type="email"
+                placeholder="Correo electrónico"
+                required
+              />
+              <select name="categoria" id="categoria">
+                <option selected="true" disabled="disabled">
+                  Seleccione una categoría
+                </option>
+                <option value="Cotizaciones">Cotizaciones</option>
+
+                <option value="Ventas">Ventas</option>
+                <option value="Quiero hablar con un representante">
+                  Hablar con un representante
+                </option>
+              </select>
+              <textarea
+                name="consulta"
+                placeholder="¿Cuál es el motivo de tu consulta?"
+                rows="6"
+                required
+              ></textarea>
+              <input name="Submit" type="submit" value="Enviar" />
+              <!-- <button class="boton boton1" id="enviar" name="enviar" type="submit" class="btn">ENVIAR</button> -->
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer id="footer">
+      <div class="inner">
+        <div class="content">
+          <img
+            class="imglogo"
+            src="http://192.168.126.1:8887/EasyFutbol.png"
+            alt=""
+          />
+          <section>
+            <ul class="alt">
+              <img
+                class="imglogo"
+                src="http://192.168.126.1:8887/Escudo.png"
+                alt=""
+              />
+            </ul>
+          </section>
+          <section>
+            <h4>Nuestras redes</h4>
+            <ul class="plain">
+              <li>
+                <a href="https://www.facebook.com/LuzmelEventos"
+                  ><i class="icon fa-facebook">&nbsp;</i> Facebook</a
+                >
+              </li>
+              <li>
+                <a href="https://www.instagram.com/luzmel_mat_eventos/"
+                  ><i class="icon fa-instagram">&nbsp;</i> Instagram</a
+                >
+              </li>
+            </ul>
+          </section>
+        </div>
+        <div class="copyright">
+          <img
+            class="imglogo2"
+            src="http://192.168.126.1:8887/Logo%20final%20Blanco.png"
+            alt=""
+          />
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

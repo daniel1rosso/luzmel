@@ -1,0 +1,83 @@
+
+.body{
+    display: flex;
+}
+
+
+
+.contain{
+    display: flex;
+    margin-left: 120px;
+}
+
+.title{
+    align-items: center;
+    display: flex;
+    padding-left: 16px;
+    margin-bottom: 16px;
+    background-color: darkcyan
+}
+
+.header{
+    align-items: center;
+    width: 25%;
+    height: 25%;
+    justify-content: flex-start;
+    padding-left: 16px;
+}
+
+.datosCliente{
+    align-items: center;
+    display: grid;
+}
+.cliente{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 24px;
+}
+.table{
+    min-width: 100%;
+    padding-left: 16px;
+}
+
+.details{
+    margin-top: 25px;
+    min-width: 100%;
+    height: auto;
+    padding-left: 26px;
+    padding-right: 16px;
+}
+
+.datosCliente{
+    margin-top: 12px;
+    margin-left: 8px;
+}
+
+.textArea{
+    padding: 25px;
+    min-width:100%;
+    display: block;
+    padding-left: 16px;
+    padding-right: 16px;
+    
+}
+
+.area{
+    height: 300px;
+    border-color: black;
+    border-style: groove;
+}
+
+
+
+.results{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 24px;
+    padding-left: 16px;
+    width: 55%;
+}
+
+.imprimir{
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 28px; 
+}

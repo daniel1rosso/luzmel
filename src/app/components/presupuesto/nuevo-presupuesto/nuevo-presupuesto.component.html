@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      />
+      <title>Document</title>
+
+      <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+        crossorigin="anonymous"
+      />
+      <script
+        src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"
+      ></script>
+    </head>
+    <header>
+      <app-navbar></app-navbar>
+    </header>
+    <body>
+      <div class= "formularios">
+        <div class="formulario">
+          <form class="shadow p-5 mb-4 mt-3 bg-aqua" #formulario="ngForm" (ngSubmit)="guardarPresupuesto(formulario)">
+              <label class="col-form-label">Cliente:</label>
+              <select
+                class="form-control"
+                ngModel
+                name="cliente"
+                id="cliente"
+                ngModel
+                required
+                #cliente="ngModel"
+                [(ngModel)]="presupuesto_.cliente"
+                [class.is-invalid]="cliente.invalid && cliente.touched"
+                [class.is-valid]="cliente.valid"
+              >
+                <option value="" selected hidden>Seleccione el Cliente</option>
+                <option *ngFor="let c of clientes" [ngValue]="c">
+                  {{ c.nombre }}
+                </option>
+              </select>
+              <label class="col-form-label">Estado:</label>
+              <select
+                class="form-control"
+                ngModel
+                name="estado"
+                id="estado"
+                ngModel
+                required
+                #estado="ngModel"
+                [(ngModel)]="presupuesto_.estado"
+                [class.is-invalid]="estado.invalid && estado.touched"
+                [class.is-valid]="estado.valid"
+              >
+                <option value="" selected hidden>Seleccione el Estado</option>
+                <option *ngFor="let e of estados" [ngValue]="e">
+                  {{ e.nombre }}
+                </option>
+              </select>
+            <div class="results">
+                <hr width=auto>
+                <h2>Totales</h2>
+                <label class="col-form-label">Descuento:</label>
+                <input
+                  class="form-control "
+                  type="number"
+                  name="descuento"
+                  id="descuento"
+                  [(ngModel)]="presupuesto_.descuento"
+                  (blur)="descuento()"
+                />
+                <label class="col-form-label ">Descuento Especial:</label>
+                <input
+                  class="form-control"
+                  type="number"
+                  name="descuentoEspecial"
+                  id="descuento_especial"
+                  [(ngModel)]="presupuesto_.descuento_especial"
+                  (blur)="descuento_especial()"
+                />
+                <label class="col-form-label ">Flete:</label>
+                <input
+                  class="form-control "
+                  type="number"
+                  name="flete"
+                  id="flete"
+                  [(ngModel)]="presupuesto_.flete"
+                  (blur)="flete()"
+                />
+                <label class="col-form-label ">TOTAL:</label>
+                <input
+                  class="form-control "
+                  type="number"
+                  name="precio"
+                  id="totalPresupuesto"
+                  [(ngModel)]="presupuesto_.total"
+                  value = 0
+                  readonly
+                />
+              <div class="button">
+                <button
+                class="cap btn-success "
+                type="submit"
+                id="btnFinalizarPresupuesto"
+              >
+                Crear Presupuesto
+              </button>
+              </div>
+              
+            </div>
+          </form>
+        </div>
+        <div class= "formularioDetalle">
+          <form #formulario2="ngForm" >
+              <div class="form-group div2 row">
+                <label class="col-form-label col-1">Producto:</label>
+                <select
+                  class="form-control col-2"
+                  ngModel
+                  name="producto"
+                  id="producto"
+                  [(ngModel)]="detalle_presupuesto.producto"
+                  #producto="ngModel"
+                >
+                  <option value="" selected hidden>Seleccione el Producto</option>
+                  <option *ngFor="let p of productos" [ngValue]="p">
+                    {{ p.nombre }}
+                  </option>
+                </select>
+                <label class="col-form-label col-1">Cantidad:</label>
+                <input
+                  class="form-control col-2"
+                  type="number"
+                  name="cantidadProducto"
+                  id="cantidadProducto"
+                  placeholder="Escriba el número aquí"
+                  [(ngModel)]="detalle_presupuesto.cantidad"
+                  #cantidadProducto="ngModel"
+                />
+                <button
+                  type="button"
+                  class="btn btn-success ml-4"
+                  id="btnAgregarProductoCarro"
+                  (click)="agregar_producto()"
+                >
+                  Agregar
+                </button>
+              </div>
+              <div class="div3 form-group"></div>
+                <div class="qtable">
+                  <h2 class="title">Lista de Productos</h2>
+                  <div class="table">
+                    <table class="tabla2 row-border hover">
+                      <thead>
+                        <tr>
+                          <th>Producto</th>
+                          <th>Cantidad</th>
+                          <th>Precio Unitario</th>
+                          <th>Precio Total</th>
+                          <th>Opciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let dp of detallepresupuesto; let i=index">
+                            <td>{{ dp.producto.nombre }}</td>
+                            <td>{{ dp.cantidad }}</td>
+                            <td>{{dp.producto.precioUnitario}}</td>
+                            <td>{{ dp.producto.precioUnitario *  dp.cantidad }}</td>
+                            <th><button
+                              type="button"
+                              class="btn btn-danger ml-4"
+                              id="btnEliminarProducto"
+                              (click)="eliminar_producto(i,dp.producto.precioUnitario *  dp.cantidad)"
+                            >
+                              Eliminar
+                            </button></th>
+                          </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+          </form>
+        </div> 
+      </div>
+    </body>
+</html>

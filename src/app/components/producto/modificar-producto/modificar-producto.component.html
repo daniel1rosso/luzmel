@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <header>
+    <app-navbar></app-navbar>
+  </header>
+  <body>
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-7">
+          <h2 class="display-4 text-center">Modificar Producto</h2>
+          <hr style="border-color: #333736" />
+          <p class="pb-0 mb-0">
+            Aquí podrás modificar los datos de los productos que ya tienes
+            disponibles.
+          </p>
+          <p class="text-danger small pt-0 mt-0">
+            *Todos lo campos son obligatorios
+          </p>
+          <form
+            class="shadow p-4 mb-4 bg-aqua"
+            (ngSubmit)="modificarProducto(formulario)"
+            #formulario="ngForm"
+          >
+            <div class="form-group row">
+              <label class="col-form-label col-5">ID Producto:</label>
+              <input
+                class="form-control col-6"
+                type="text"
+                name="idProducto"
+                id="idProducto"
+                [(ngModel)]="productos[0]._id"
+                readonly
+              />
+            </div>
+
+            <div class="form-group row">
+              <label class="col-form-label col-5"
+                >Clasificacion del producto:</label
+              >
+              <select
+                class="form-control col-6"
+                name="clasificacion"
+                id="clasificacion"
+                [(ngModel)]="productos[0].clasificacion"
+              >
+                <option *ngFor="let c of clasificaciones" [ngValue]="productos[0].clasificacion">
+                  {{ c.nombre }}
+                </option>
+              </select>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-form-label col-5">Nombre:</label>
+              <input
+                class="form-control col-6"
+                type="text"
+                [(ngModel)]="productos[0].nombre"
+                name="nombre"
+                id="nombre"
+                placeholder="Ingrese nombre "
+
+              />
+            </div>
+
+            <div class="form-group row">
+              <label class="col-form-label col-5">Descripción:</label>
+              <textarea
+                rows="4"
+                class="form-control col-6"
+                type="text"
+                name="descripcion"
+                id="descripcion"
+                placeholder="Añade una breve descripción"
+                [(ngModel)]="productos[0].descripcion"
+                style="resize: none"
+              ></textarea>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-form-label col-5">Cantidad:</label>
+              <input
+                class="form-control col-6"
+                type="number"
+                name="cantidadProducto"
+                id="cantidadProducto"
+                placeholder="Escriba el número aquí"
+                [(ngModel)]="productos[0].cantidadProducto"
+              />
+            </div>
+
+            <div class="form-group row">
+              <label class="col-form-label col-5">Precio Unitario:</label>
+              <input
+                class="form-control col-6"
+                type="number"
+                name="precioUnitario"
+                id="precioUnitario"
+                placeholder="Escriba el número aquí"
+                [(ngModel)]="productos[0].precioUnitario"
+              />
+            </div>
+
+            <button
+              type="submit"
+              [disabled]="formulario.invalid"
+              class="btn btn-success mt-3"
+              id="btnGuardar"
+            >
+              Guardar
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger pl-2 ml-2 mt-3"
+              id="btnCancelar"
+              routerLink="/productos"
+            >
+              Cancelar
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
